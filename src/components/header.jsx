@@ -10,6 +10,11 @@ const Container = styled.header`
   display: flex;
   padding: 20px 50px;
   justify-content: space-between;
+  z-index: 100000;
+  @media only screen and (max-width: 480px) {
+    height: 0px;
+    padding: 10px 25px;
+  }
 `;
 
 const Logo = styled.img`
@@ -21,17 +26,21 @@ const Logo = styled.img`
   top: 10px;
   z-index: 100000;
   box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+  @media only screen and (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 const Links = styled.div`
   display: grid;
   grid-auto-flow: column;
   gap: 25px;
+  align-items: center;
   * {
     color: #fff;
   }
 `;
-
 
 const Header = ({ theme, changeTheme }) => {
   return (
@@ -40,13 +49,10 @@ const Header = ({ theme, changeTheme }) => {
         <Logo src={`/${theme}-logo.png`} />
       </div>
       <Links className="navlinks">
-        <div>About</div>
+        {/* <div>About</div>
         <div>Blog</div>
-        <div>Contact</div>
-        <Toggle 
-            theme={theme}
-            changeTheme={changeTheme}
-        />
+        <div>Contact</div> */}
+        <Toggle theme={theme} changeTheme={changeTheme} />
       </Links>
     </Container>
   );

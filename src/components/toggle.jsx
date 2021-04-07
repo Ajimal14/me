@@ -44,6 +44,24 @@ const Container = styled.div`
       color: #ffc40c;
     }
   }
+
+  @media only screen and (max-width: 480px) {
+    .toggle-container {
+      width: 50px;
+      padding: 2px;
+      height: 20px;
+      position: relative;
+      .material-icons {
+        font-size: 15px;
+      }
+    }
+
+    .dialog-button {
+      padding: 0;
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 const Toggle = ({ theme, changeTheme }) => {
   const onChange = () => {

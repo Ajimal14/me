@@ -8,38 +8,53 @@ const Container = styled.div`
   height: 300px;
   display: flex;
   align-items: flex-end;
-
-  .banner-content {
-    margin: 0 auto;
-    max-width: 800px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    -webkit-box-align: center;
-    align-items: center;
-    gap: 40px;
+  @media only screen and (max-width: 480px) {
+    height: 200px;
   }
+`;
 
-  .banner-content-heading {
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    font-weight: bold;
+const Mugshot = styled.img`
+  height: 250px;
+  @media only screen and (max-width: 480px) {
+    height: 125px;
   }
+`;
 
-  .mugshot {
-    height: 250px;
+const Text = styled.div`
+  color: ${(props) => props.theme.bannerText};
+  font-size: 35px;
+  font-weight: bold;
+  font-family: "Bebas Neue";
+  @media only screen and (max-width: 480px) {
+    font-size: 25px;
+  }
+`;
+
+const Wrapper = styled.div`
+  margin: 0 auto;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 40px;
+  @media only screen and (max-width: 480px) {
+    max-width: 95%;
+    gap: 20px;
   }
 `;
 
 const Banner = ({ theme }) => {
   return (
     <Container>
-      <div className="banner-content">
-        <img className="mugshot" src={`/${theme}-mugshot.png`} />
-        <div className="banner-content-heading">
-          Hey, I'm Ashish Ajimal. I work with startups to hit the ground running
-          on their digital journey.
-        </div>
-      </div>
+      <Wrapper>
+        <Mugshot src={`/${theme}-mugshot.png`} />
+        <Text>
+          Hey, I'm Ashish Ajimal.
+          <br />I work with startups to hit the ground running on their digital
+          journey.
+        </Text>
+      </Wrapper>
     </Container>
   );
 };

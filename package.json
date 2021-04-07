@@ -14,10 +14,18 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@fontsource/bebas-neue": "^4.2.2",
     "@fontsource/material-icons": "^4.2.4",
     "@fontsource/poppins": "^4.2.2",
+    "@fontsource/raleway": "^4.2.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^3.2.1",
+    "gatsby-plugin-fontawesome-css": "^1.1.0",
     "gatsby-plugin-sass": "^4.2.0",
     "gatsby-plugin-styled-components": "^4.2.0",
     "react": "^17.0.1",
