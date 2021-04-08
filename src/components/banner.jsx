@@ -9,14 +9,17 @@ const Container = styled.div`
   display: flex;
   align-items: flex-end;
   @media only screen and (max-width: 480px) {
-    height: 200px;
+    height: 220px;
   }
 `;
 
 const Mugshot = styled.img`
   height: 250px;
   @media only screen and (max-width: 480px) {
-    height: 125px;
+    height: 110px;
+  }
+  @media only screen and (max-width: 375px) {
+    height: 100px;
   }
 `;
 
@@ -26,7 +29,10 @@ const Text = styled.div`
   font-weight: bold;
   font-family: "Bebas Neue";
   @media only screen and (max-width: 480px) {
-    font-size: 25px;
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 375px) {
+    font-size: 17.5px;
   }
 `;
 
@@ -41,7 +47,9 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 480px) {
     max-width: 95%;
     gap: 20px;
+    margin-bottom: 20px;
   }
+  
 `;
 
 const Banner = ({ theme }) => {

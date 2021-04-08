@@ -2,9 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styled from "styled-components";
-import Themes from "../styles/theme";
 import {
   faCss3,
+  faFantasyFlightGames,
   faHtml5,
   faJs,
   faNodeJs,
@@ -13,12 +13,20 @@ import {
 import {
   faBed,
   faBeer,
+  faCartPlus,
   faFootballBall,
   faFutbol,
+  faGamepad,
+  faHandsWash,
   faHeart,
+  faMagic,
   faMobile,
+  faNetworkWired,
   faPizzaSlice,
   faRadiation,
+  faSchool,
+  faTv,
+  faUserSecret,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
@@ -29,15 +37,12 @@ const Container = styled.div`
   margin: 0 auto;
 
   hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.75),
-      rgba(255, 255, 255, 0)
-    );
-    margin: 15px auto;
+    border: 1px dotted ${(props) => props.theme.headingColor};
+    background: ${props => props.theme.contentDropColor};
+    height: 2px;
+    width: 25px;
+    margin: 15px 0;
+    border-radius: 50px;
   }
   @media only screen and (max-width: 480px) {
     max-width: 95%;
@@ -57,7 +62,7 @@ const MiddleContent = styled.div`
   color: ${(props) => props.theme.textColor};
   font-weight: bold;
   @media only screen and (max-width: 480px) {
-    margin-top: -5px;
+    margin-top: -20px;
   }
 `;
 
@@ -67,9 +72,10 @@ const Heading = styled.div`
   font-size: 35px;
   display: flex;
   justify-content: space-between;
-  margin: 15px 0px;
+  margin-bottom: 10px;
   @media only screen and (max-width: 480px) {
     font-size: 25px;
+    margin-bottom: 5px;
   }
 `;
 
@@ -93,6 +99,7 @@ const Text = styled.div`
   font-size: 16px;
   line-height: 1.5;
   font-family: "Raleway";
+  padding: 10px;
 
   svg {
     margin: 0px 5px;
@@ -106,6 +113,29 @@ const Text = styled.div`
 
 const Spacer = styled.div`
   margin-top: 40px;
+`;
+
+const SubHeading = styled.div`
+  color: ${(props) => props.theme.headingColor};
+  font-family: "Poppins";
+  font-size: 16px;
+  margin: 10px auto;
+  font-weight: bold;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 12px;
+    margin: 5px auto;
+  }
+`;
+
+const TimelineText = styled.div`
+  font-size: 14px;
+  margin-left: 10px;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 9px;
+    margin-left: 5px;
+  }
 `;
 
 const Content = ({ theme }) => {
@@ -133,23 +163,107 @@ const Content = ({ theme }) => {
           startups varying from Security, Logistics, E-Commerce, and Fantasy
           Sports.
         </Text>
+
+        <Spacer />
+        <Heading>Timeline</Heading>
+        <Text>
+          <div>
+            <SubHeading>
+              {" "}
+              <FontAwesomeIcon icon={faMagic} /> Fantasy
+            </SubHeading>
+
+            <TimelineText>
+              A Promising Fantasy Sports startup disrupted the space with
+              Advanced Fantasy sports experience.
+              <br />
+              As the fantasy space grew in India we launched multiple sports
+              with exciting features.
+              <br />
+              Unluckily, our startup ran out of funds too soon.
+            </TimelineText>
+          </div>
+          <hr />
+          <div>
+            <SubHeading>
+              <FontAwesomeIcon icon={faHandsWash} /> Laundry
+            </SubHeading>
+
+            <TimelineText>
+              Early Laundry startup with pick and drop services for Gurgaon.
+              <br />
+              We suspended operations after few months due to a lack of storage
+              and logistic power.
+            </TimelineText>
+          </div>
+          <hr />
+          <div>
+            <SubHeading>
+              <FontAwesomeIcon icon={faCartPlus} /> E-Commerce
+            </SubHeading>
+
+            <TimelineText>
+              A midsized e-commerce company, producing and selling health
+              supplements in India.
+              <br />
+              India's biggest online marketplace supplements and health goods.
+            </TimelineText>
+          </div>
+          <hr />
+          <div>
+            <SubHeading>
+              <FontAwesomeIcon icon={faMagic} /> Fantasy 2.0
+            </SubHeading>
+
+            <TimelineText>
+              Designed and developed a fantasy platform from scratch with plug
+              and playable fantasy model.
+              <br />
+            </TimelineText>
+          </div>
+          <hr />
+          <div>
+            <SubHeading>
+              <FontAwesomeIcon icon={faSchool} /> Education
+            </SubHeading>
+
+            <TimelineText>
+              Ed-tech company with the largest catalog of specialization courses
+              in the government and banking sector.
+            </TimelineText>
+          </div>
+          <hr />
+          <div>
+            <SubHeading>
+              <FontAwesomeIcon icon={faUserSecret} /> Security
+            </SubHeading>
+
+            <TimelineText>
+              Currently working in a Cyber Security Company with solutions
+              ranging from communication endpoint security, encryption, network
+              security, cloud security, email security, mobile security and
+              unified threat management.
+            </TimelineText>
+          </div>
+        </Text>
+
         <Spacer />
         <Heading>Four-Four-Two.</Heading>
         <Text>
-          I <FontAwesomeIcon icon={faHeart} /> to watch{" "}
-          <FontAwesomeIcon icon={faFutbol} />
-          on weekends worsening my sleeping <FontAwesomeIcon
-            icon={faBed}
-          />{" "}
-          pattern with a pint of wheat beer
-          <FontAwesomeIcon icon={faBeer} />
-          and a cold slice of pizza
-          <FontAwesomeIcon icon={faPizzaSlice} /> in my hand.
+          <FontAwesomeIcon icon={faTv} />I love to watch football on weekends
+          worsening my sleeping pattern with a pint of wheat beer and a cold
+          slice of pizza in my hand.
           <br />
-          I also support Paris Saint Germain.
-          <hr />
-          I've played football in the past for Local Clubs in Delhi and 9-aside
-          National Tournament.
+          <br />
+          <FontAwesomeIcon icon={faHeart} /> I support Paris Saint Germain.
+          <br />
+          <br />
+          <FontAwesomeIcon icon={faFutbol} /> I've played football in the past
+          for Local Clubs in Delhi and 9-aside National Tournament.
+          <br />
+          <br />
+          <FontAwesomeIcon icon={faGamepad} /> I enjoy playing FIFA in my spare
+          time.
         </Text>
       </MiddleContent>
     </Container>

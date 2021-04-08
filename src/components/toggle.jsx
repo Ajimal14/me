@@ -20,7 +20,7 @@ const Container = styled.div`
     line-height: 16px;
     font-weight: bold;
     cursor: pointer;
-    background-color: #2e89c7;
+    background-color: ${props => props.theme.primaryColor};
     color: white;
     padding: 8px 12px;
     display: flex;
@@ -60,6 +60,10 @@ const Container = styled.div`
       padding: 0;
       width: 20px;
       height: 20px;
+      left: 30px;
+    }
+    .disabled {
+      left: 2px;
     }
   }
 `;

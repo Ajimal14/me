@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Banner from "../components/banner";
 import Content from "../components/content";
 import Header from "../components/header";
-import Socials from "../components/socials";
+import { Helmet } from "react-helmet"
 import { ThemeProvider } from "styled-components";
 import Theme from "../styles/theme";
 import styled from "styled-components";
@@ -17,6 +17,11 @@ export default function Home() {
   const [theme, changeTheme] = useState("light");
   return (
     <ThemeProvider theme={Theme[theme]}>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>Ashish Ajimal</title>
+          <link rel="canonical" href="https://ajima14.github.io" />
+        </Helmet>
       <Container>
         <Header theme={theme} changeTheme={changeTheme} />
         {/* <Socials /> */}
