@@ -19,16 +19,10 @@ function setupGetInstanceId() {
 }
 
 const getId = setupGetInstanceId();
-const useIsomorphicLayoutEffect = canUseDOM()
-  ? React.useLayoutEffect
-  : React.useEffect;
+const useIsomorphicLayoutEffect = canUseDOM() ? React.useLayoutEffect : React.useEffect;
 
 function canUseDOM() {
-  return !!(
-    typeof window !== `undefined` &&
-    window.document &&
-    window.document.createElement
-  );
+  return !!(typeof window !== `undefined` && window.document && window.document.createElement);
 }
 
 let serverHandoffCompleted = false;

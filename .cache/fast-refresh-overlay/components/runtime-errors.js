@@ -1,25 +1,25 @@
-import * as React from "react";
-import StackTrace from "stack-trace";
-import { Overlay, Header, HeaderOpenClose, Body } from "./overlay";
-import { useStackFrame } from "./hooks";
-import { CodeFrame } from "./code-frame";
-import { getCodeFrameInformation, openInEditor } from "../utils";
-import { Accordion, AccordionItem } from "./accordion";
+import * as React from "react"
+import StackTrace from "stack-trace"
+import { Overlay, Header, HeaderOpenClose, Body } from "./overlay"
+import { useStackFrame } from "./hooks"
+import { CodeFrame } from "./code-frame"
+import { getCodeFrameInformation, openInEditor } from "../utils"
+import { Accordion, AccordionItem } from "./accordion"
 
 function WrappedAccordionItem({ error, open }) {
-  const stacktrace = StackTrace.parse(error);
-  const codeFrameInformation = getCodeFrameInformation(stacktrace);
-  const filePath = codeFrameInformation?.moduleId;
-  const lineNumber = codeFrameInformation?.lineNumber;
-  const columnNumber = codeFrameInformation?.columnNumber;
-  const name = codeFrameInformation?.functionName;
+  const stacktrace = StackTrace.parse(error)
+  const codeFrameInformation = getCodeFrameInformation(stacktrace)
+  const filePath = codeFrameInformation?.moduleId
+  const lineNumber = codeFrameInformation?.lineNumber
+  const columnNumber = codeFrameInformation?.columnNumber
+  const name = codeFrameInformation?.functionName
 
-  const res = useStackFrame({ moduleId: filePath, lineNumber, columnNumber });
-  const line = res.sourcePosition?.line;
+  const res = useStackFrame({ moduleId: filePath, lineNumber, columnNumber })
+  const line = res.sourcePosition?.line
 
   const Title = () => {
     if (!name) {
-      return <>Unknown Runtime Error</>;
+      return <>Unknown Runtime Error</>
     }
 
     return (
@@ -30,8 +30,8 @@ function WrappedAccordionItem({ error, open }) {
           {filePath}:{line}
         </span>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <AccordionItem open={open} title={<Title />}>
@@ -49,14 +49,14 @@ function WrappedAccordionItem({ error, open }) {
       </div>
       <CodeFrame decoded={res.decoded} />
     </AccordionItem>
-  );
+  )
 }
 
 export function RuntimeErrors({ errors, dismiss }) {
   const deduplicatedErrors = React.useMemo(() => Array.from(new Set(errors)), [
     errors,
-  ]);
-  const hasMultipleErrors = deduplicatedErrors.length > 1;
+  ])
+  const hasMultipleErrors = deduplicatedErrors.length > 1
 
   return (
     <Overlay>
@@ -90,5 +90,5 @@ export function RuntimeErrors({ errors, dismiss }) {
         </Accordion>
       </Body>
     </Overlay>
-  );
+  )
 }

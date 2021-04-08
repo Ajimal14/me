@@ -107,7 +107,7 @@ const Text = styled.div`
   }
 
   @media only screen and (max-width: 480px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 `;
 
@@ -123,7 +123,7 @@ const SubHeading = styled.div`
   font-weight: bold;
 
   @media only screen and (max-width: 480px) {
-    font-size: 12px;
+    font-size: 14px;
     margin: 5px auto;
   }
 `;
@@ -138,7 +138,7 @@ const TimelineText = styled.div`
   }
 
   @media only screen and (max-width: 480px) {
-    font-size: 9px;
+    font-size: 12px;
     margin-left: 5px;
   }
 `;
@@ -147,7 +147,7 @@ const Roster = styled.img`
   height: 250px;
   margin: 20px auto;
   @media only screen and (max-width: 480px) {
-    height: 125px;
+    height: 150px;
   }
 `;
 
@@ -158,7 +158,8 @@ const FourFourTwoGrid = styled.div`
   align-items: center;
   font-family: "Raleway";
   @media only screen and (max-width: 480px) {
-    grid-gap: 20px;
+    grid-gap: 50px;
+    margin-top: 20px;
   }
 `;
 

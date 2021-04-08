@@ -33,11 +33,15 @@ const Container = styled.div`
     width: 30px;
     height: 30px;
     margin-left: 20px;
+    @media only screen and (max-width: 480px) {
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+    }
   }
 `;
 
 const Socials = () => {
-  const styles = {};
   return (
     <Container className="socials" target="_blank">
       <a href="http://linkedin.com/in/ashishajimal/" rel="noopener noreferrer">

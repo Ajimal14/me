@@ -9,9 +9,7 @@ exports.init = init;
 exports.shouldUpdateScroll = shouldUpdateScroll;
 exports.RouteUpdates = void 0;
 
-var _extends2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/extends")
-);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -37,7 +35,7 @@ var _gatsbyLink = require("gatsby-link");
 const redirectMap = new Map();
 const redirectIgnoreCaseMap = new Map();
 
-_redirects.default.forEach((redirect) => {
+_redirects.default.forEach(redirect => {
   if (redirect.ignoreCase) {
     redirectIgnoreCaseMap.set(redirect.fromPath, redirect);
   } else {
@@ -55,9 +53,7 @@ function maybeRedirect(pathname) {
   if (redirect != null) {
     if (process.env.NODE_ENV !== `production`) {
       if (!_loader.default.isPageNotFound(pathname)) {
-        console.error(
-          `The route "${pathname}" matches both a page and a redirect; this is probably not intentional.`
-        );
+        console.error(`The route "${pathname}" matches both a page and a redirect; this is probably not intentional.`);
       }
     }
 
@@ -73,7 +69,7 @@ const onPreRouteUpdate = (location, prevLocation) => {
   if (!maybeRedirect(location.pathname)) {
     (0, _apiRunnerBrowser.apiRunner)(`onPreRouteUpdate`, {
       location,
-      prevLocation,
+      prevLocation
     });
   }
 };
@@ -82,16 +78,13 @@ const onRouteUpdate = (location, prevLocation) => {
   if (!maybeRedirect(location.pathname)) {
     (0, _apiRunnerBrowser.apiRunner)(`onRouteUpdate`, {
       location,
-      prevLocation,
+      prevLocation
     });
 
-    if (
-      process.env.GATSBY_EXPERIMENTAL_QUERY_ON_DEMAND &&
-      process.env.GATSBY_QUERY_ON_DEMAND_LOADING_INDICATOR === `true`
-    ) {
+    if (process.env.GATSBY_EXPERIMENTAL_QUERY_ON_DEMAND && process.env.GATSBY_QUERY_ON_DEMAND_LOADING_INDICATOR === `true`) {
       _emitter.default.emit(`onRouteUpdate`, {
         location,
-        prevLocation,
+        prevLocation
       });
     }
   }
@@ -107,7 +100,9 @@ const navigate = (to, options = {}) => {
     return;
   }
 
-  let { pathname } = (0, _gatsbyLink.parsePath)(to);
+  let {
+    pathname
+  } = (0, _gatsbyLink.parsePath)(to);
   let redirect = redirectMap.get(pathname);
 
   if (!redirect) {
@@ -115,11 +110,13 @@ const navigate = (to, options = {}) => {
   } // If we're redirecting, just replace the passed in pathname
   // to the one we want to redirect to.
 
+
   if (redirect) {
     to = redirect.toPath;
     pathname = (0, _gatsbyLink.parsePath)(to).pathname;
   } // If we had a service worker update, no matter the path, reload window and
   // reset the pathname whitelist
+
 
   if (window.___swUpdated) {
     window.location = pathname;
@@ -127,27 +124,25 @@ const navigate = (to, options = {}) => {
   } // Start a timer to wait for a second before transitioning and showing a
   // loader in case resources aren't around yet.
 
+
   const timeoutId = setTimeout(() => {
     _emitter.default.emit(`onDelayedLoadPageResources`, {
-      pathname,
+      pathname
     });
 
     (0, _apiRunnerBrowser.apiRunner)(`onRouteUpdateDelayed`, {
-      location: window.location,
+      location: window.location
     });
   }, 1000);
 
-  _loader.default.loadPage(pathname).then((pageResources) => {
+  _loader.default.loadPage(pathname).then(pageResources => {
     // If no page resources, then refresh the page
     // Do this, rather than simply `window.location.reload()`, so that
     // pressing the back/forward buttons work - otherwise when pressing
     // back, the browser will just change the URL and expect JS to handle
     // the change, which won't always work since it might not be a Gatsby
     // page.
-    if (
-      !pageResources ||
-      pageResources.status === _loader.PageResourceStatus.Error
-    ) {
+    if (!pageResources || pageResources.status === _loader.PageResourceStatus.Error) {
       window.history.replaceState({}, ``, location.href);
       window.location = pathname;
       clearTimeout(timeoutId);
@@ -155,19 +150,13 @@ const navigate = (to, options = {}) => {
     } // If the loaded page has a different compilation hash to the
     // window, then a rebuild has occurred on the server. Reload.
 
+
     if (process.env.NODE_ENV === `production` && pageResources) {
-      if (
-        pageResources.page.webpackCompilationHash !==
-        window.___webpackCompilationHash
-      ) {
+      if (pageResources.page.webpackCompilationHash !== window.___webpackCompilationHash) {
         // Purge plugin-offline cache
-        if (
-          `serviceWorker` in navigator &&
-          navigator.serviceWorker.controller !== null &&
-          navigator.serviceWorker.controller.state === `activated`
-        ) {
+        if (`serviceWorker` in navigator && navigator.serviceWorker.controller !== null && navigator.serviceWorker.controller.state === `activated`) {
           navigator.serviceWorker.controller.postMessage({
-            gatsbyApi: `clearPathResources`,
+            gatsbyApi: `clearPathResources`
           });
         }
 
@@ -180,20 +169,23 @@ const navigate = (to, options = {}) => {
   });
 };
 
-function shouldUpdateScroll(prevRouterProps, { location }) {
-  const { pathname, hash } = location;
+function shouldUpdateScroll(prevRouterProps, {
+  location
+}) {
+  const {
+    pathname,
+    hash
+  } = location;
   const results = (0, _apiRunnerBrowser.apiRunner)(`shouldUpdateScroll`, {
     prevRouterProps,
     // `pathname` for backwards compatibility
     pathname,
     routerProps: {
-      location,
+      location
     },
-    getSavedScrollPosition: (args) => [
-      0, // FIXME this is actually a big code smell, we should fix this
-      // eslint-disable-next-line @babel/no-invalid-this
-      this._stateStorage.read(args, args.key),
-    ],
+    getSavedScrollPosition: args => [0, // FIXME this is actually a big code smell, we should fix this
+    // eslint-disable-next-line @babel/no-invalid-this
+    this._stateStorage.read(args, args.key)]
   });
 
   if (results.length > 0) {
@@ -204,7 +196,9 @@ function shouldUpdateScroll(prevRouterProps, { location }) {
 
   if (prevRouterProps) {
     const {
-      location: { pathname: oldPathname },
+      location: {
+        pathname: oldPathname
+      }
     } = prevRouterProps;
 
     if (oldPathname === pathname) {
@@ -220,21 +214,20 @@ function shouldUpdateScroll(prevRouterProps, { location }) {
 function init() {
   // The "scroll-behavior" package expects the "action" to be on the location
   // object so let's copy it over.
-  _history.globalHistory.listen((args) => {
+  _history.globalHistory.listen(args => {
     args.location.action = args.action;
   });
 
-  window.___push = (to) =>
-    navigate(to, {
-      replace: false,
-    });
+  window.___push = to => navigate(to, {
+    replace: false
+  });
 
-  window.___replace = (to) =>
-    navigate(to, {
-      replace: true,
-    });
+  window.___replace = to => navigate(to, {
+    replace: true
+  });
 
   window.___navigate = (to, options) => navigate(to, options); // Check for initial page-load redirect
+
 
   maybeRedirect(window.location.pathname);
 }
@@ -242,7 +235,7 @@ function init() {
 class RouteAnnouncer extends _react.default.Component {
   constructor(props) {
     super(props);
-    this.announcementRef = /*#__PURE__*/ _react.default.createRef();
+    this.announcementRef = /*#__PURE__*/_react.default.createRef();
   }
 
   componentDidUpdate(prevProps, nextProps) {
@@ -253,9 +246,7 @@ class RouteAnnouncer extends _react.default.Component {
         pageName = document.title;
       }
 
-      const pageHeadings = document.querySelectorAll(
-        `#gatsby-focus-wrapper h1`
-      );
+      const pageHeadings = document.querySelectorAll(`#gatsby-focus-wrapper h1`);
 
       if (pageHeadings && pageHeadings.length) {
         pageName = pageHeadings[0].textContent;
@@ -274,13 +265,11 @@ class RouteAnnouncer extends _react.default.Component {
   }
 
   render() {
-    return /*#__PURE__*/ _react.default.createElement(
-      "div",
-      (0, _extends2.default)({}, _routeAnnouncerProps.RouteAnnouncerProps, {
-        ref: this.announcementRef,
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement("div", (0, _extends2.default)({}, _routeAnnouncerProps.RouteAnnouncerProps, {
+      ref: this.announcementRef
+    }));
   }
+
 }
 
 const compareLocationProps = (prevLocation, nextLocation) => {
@@ -290,25 +279,13 @@ const compareLocationProps = (prevLocation, nextLocation) => {
     return true;
   }
 
-  if (
-    (prevLocation === null || prevLocation === void 0
-      ? void 0
-      : (_prevLocation$state = prevLocation.state) === null ||
-        _prevLocation$state === void 0
-      ? void 0
-      : _prevLocation$state.key) !==
-    (nextLocation === null || nextLocation === void 0
-      ? void 0
-      : (_nextLocation$state = nextLocation.state) === null ||
-        _nextLocation$state === void 0
-      ? void 0
-      : _nextLocation$state.key)
-  ) {
+  if ((prevLocation === null || prevLocation === void 0 ? void 0 : (_prevLocation$state = prevLocation.state) === null || _prevLocation$state === void 0 ? void 0 : _prevLocation$state.key) !== (nextLocation === null || nextLocation === void 0 ? void 0 : (_nextLocation$state = nextLocation.state) === null || _nextLocation$state === void 0 ? void 0 : _nextLocation$state.key)) {
     return true;
   }
 
   return false;
 }; // Fire on(Pre)RouteUpdate APIs
+
 
 class RouteUpdates extends _react.default.Component {
   constructor(props) {
@@ -336,18 +313,14 @@ class RouteUpdates extends _react.default.Component {
   }
 
   render() {
-    return /*#__PURE__*/ _react.default.createElement(
-      _react.default.Fragment,
-      null,
-      this.props.children,
-      /*#__PURE__*/ _react.default.createElement(RouteAnnouncer, {
-        location: location,
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, this.props.children, /*#__PURE__*/_react.default.createElement(RouteAnnouncer, {
+      location: location
+    }));
   }
+
 }
 
 exports.RouteUpdates = RouteUpdates;
 RouteUpdates.propTypes = {
-  location: _propTypes.default.object.isRequired,
+  location: _propTypes.default.object.isRequired
 };

@@ -9,16 +9,12 @@ var React = _interopRequireWildcard(require("react"));
 
 function css(strings, ...keys) {
   const lastIndex = strings.length - 1;
-  return (
-    strings.slice(0, lastIndex).reduce((p, s, i) => p + s + keys[i], ``) +
-    strings[lastIndex]
-  );
+  return strings.slice(0, lastIndex).reduce((p, s, i) => p + s + keys[i], ``) + strings[lastIndex];
 }
 
-const Style = () =>
-  /*#__PURE__*/ React.createElement("style", {
-    dangerouslySetInnerHTML: {
-      __html: css`
+const Style = () => /*#__PURE__*/React.createElement("style", {
+  dangerouslySetInnerHTML: {
+    __html: css`
         :host {
           --color-ansi-selection: rgba(95, 126, 151, 0.48);
           --color-ansi-bg: #fafafa;
@@ -421,8 +417,8 @@ const Style = () =>
             --ring-color: rgba(177, 122, 204, var(--ring-opacity));
           }
         }
-      `,
-    },
-  });
+      `
+  }
+});
 
 exports.Style = Style;

@@ -1,7 +1,7 @@
-import * as React from "react";
-import { Overlay, Header, Body, Footer, HeaderOpenClose } from "./overlay";
-import { CodeFrame } from "./code-frame";
-import { prettifyStack, openInEditor } from "../utils";
+import * as React from "react"
+import { Overlay, Header, Body, Footer, HeaderOpenClose } from "./overlay"
+import { CodeFrame } from "./code-frame"
+import { prettifyStack, openInEditor } from "../utils"
 
 // Error that is thrown on e.g. webpack errors and thus can't be dismissed and must be fixed
 export function BuildError({ error }) {
@@ -11,9 +11,9 @@ export function BuildError({ error }) {
   // Additional information (sometimes empty line => handled in "prettifyStack" function)
   // /absolute-path-to-file
   // Errors/Warnings
-  const decoded = prettifyStack(error);
-  const [filePath] = decoded;
-  const file = filePath.content.split(`\n`)[0];
+  const decoded = prettifyStack(error)
+  const [filePath] = decoded
+  const file = filePath.content.split(`\n`)[0]
 
   return (
     <Overlay>
@@ -33,5 +33,5 @@ export function BuildError({ error }) {
         </Footer>
       </Body>
     </Overlay>
-  );
+  )
 }
