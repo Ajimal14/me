@@ -18,7 +18,8 @@ function lock() {
       return;
     }
 
-    const scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
+    const scrollBarGap =
+      window.innerWidth - document.documentElement.clientWidth;
     const rootElement = document.getElementById(`___gatsby`);
 
     if (scrollBarGap > 0) {

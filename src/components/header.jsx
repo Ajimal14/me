@@ -26,6 +26,10 @@ const Logo = styled.img`
   top: 10px;
   z-index: 100000;
   box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+  :hover {
+    border-radius: 10px;
+    transition: 1s all ease;
+  }
   @media only screen and (max-width: 480px) {
     width: 60px;
     height: 60px;

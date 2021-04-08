@@ -20,7 +20,7 @@ const Container = styled.div`
     line-height: 16px;
     font-weight: bold;
     cursor: pointer;
-    background-color: ${props => props.theme.primaryColor};
+    background-color: ${(props) => props.theme.primaryColor};
     color: white;
     padding: 8px 12px;
     display: flex;

@@ -2,27 +2,6 @@ body {
   padding: 0;
   margin: 0;
   * {
-      transition: all .5s ease;
-  }
-}
-.socials {
-  background: #fff9;
-  border-radius: 10px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
-  padding: 10px;
-  text-align: center;
-  margin-left: 50px;
-  position: fixed;
-  top: 50%;
-  right: 100px;
-  transform: translate(50px, -50%);
-  img {
-    width: 50px;
-    display: block;
-    margin-bottom: 20px;
-    cursor: pointer;
-    &:last-child {
-      margin: 0;
-    }
+      transition: all .25s ease;
   }
 }

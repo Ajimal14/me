@@ -25,9 +25,8 @@ function prettifyStack(errorInformation) {
   const generated = _anser.default.ansiToJson(txt, {
     remove_empty: true,
     use_classes: true,
-    json: true
+    json: true,
   }); // Sometimes the first line/entry is an "Enter", so we need to filter this out
-
 
   const [firstLine, ...rest] = generated;
 
@@ -39,11 +38,16 @@ function prettifyStack(errorInformation) {
 }
 
 function openInEditor(file, lineNumber = 1) {
-  window.fetch(`/__open-stack-frame-in-editor?fileName=` + window.encodeURIComponent(file) + `&lineNumber=` + window.encodeURIComponent(lineNumber));
+  window.fetch(
+    `/__open-stack-frame-in-editor?fileName=` +
+      window.encodeURIComponent(file) +
+      `&lineNumber=` +
+      window.encodeURIComponent(lineNumber)
+  );
 }
 
 function getCodeFrameInformation(stackTrace) {
-  const callSite = stackTrace.find(CallSite => CallSite.getFileName());
+  const callSite = stackTrace.find((CallSite) => CallSite.getFileName());
 
   if (!callSite) {
     return null;
@@ -57,7 +61,7 @@ function getCodeFrameInformation(stackTrace) {
     moduleId,
     lineNumber,
     columnNumber,
-    functionName
+    functionName,
   };
 }
 

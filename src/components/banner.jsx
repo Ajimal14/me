@@ -49,7 +49,6 @@ const Wrapper = styled.div`
     gap: 20px;
     margin-bottom: 20px;
   }
-  
 `;
 
 const Banner = ({ theme }) => {

@@ -11,21 +11,22 @@ class ErrorBoundary extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      error: null
+      error: null,
     };
   }
 
   componentDidCatch(error) {
     this.setState({
-      error
+      error,
     });
   }
 
   render() {
     // Without this check => possible infinite loop
-    return this.state.error && this.props.hasErrors ? null : this.props.children;
+    return this.state.error && this.props.hasErrors
+      ? null
+      : this.props.children;
   }
-
 }
 
 exports.ErrorBoundary = ErrorBoundary;

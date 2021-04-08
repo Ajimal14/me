@@ -1,29 +1,29 @@
-import * as React from "react"
-import { Body, Header, HeaderOpenClose, Overlay } from "./overlay"
-import { Accordion, AccordionItem } from "./accordion"
-import { openInEditor, prettifyStack } from "../utils"
-import { CodeFrame } from "./code-frame"
+import * as React from "react";
+import { Body, Header, HeaderOpenClose, Overlay } from "./overlay";
+import { Accordion, AccordionItem } from "./accordion";
+import { openInEditor, prettifyStack } from "../utils";
+import { CodeFrame } from "./code-frame";
 
 function WrappedAccordionItem({ error, open }) {
   const title =
     error?.error?.message ||
     error.context.sourceMessage ||
-    `Unknown GraphQL error`
-  const docsUrl = error?.docsUrl
-  const filePath = error?.filePath
-  const lineNumber = error?.location?.start?.line
-  const columnNumber = error?.location?.start?.column
+    `Unknown GraphQL error`;
+  const docsUrl = error?.docsUrl;
+  const filePath = error?.filePath;
+  const lineNumber = error?.location?.start?.line;
+  const columnNumber = error?.location?.start?.column;
 
-  let locString = ``
+  let locString = ``;
   if (typeof lineNumber !== `undefined`) {
-    locString += `:${lineNumber}`
+    locString += `:${lineNumber}`;
     if (typeof columnNumber !== `undefined`) {
-      locString += `:${columnNumber}`
+      locString += `:${columnNumber}`;
     }
   }
 
   // Sometimes the GraphQL error text has ANSI in it. If it's only text, it'll be passed through
-  const decoded = prettifyStack(error.text)
+  const decoded = prettifyStack(error.text);
 
   return (
     <AccordionItem open={open} title={title}>
@@ -55,14 +55,14 @@ function WrappedAccordionItem({ error, open }) {
         )}
       </div>
     </AccordionItem>
-  )
+  );
 }
 
 export function GraphqlErrors({ errors, dismiss }) {
   const deduplicatedErrors = React.useMemo(() => Array.from(new Set(errors)), [
     errors,
-  ])
-  const hasMultipleErrors = deduplicatedErrors.length > 1
+  ]);
+  const hasMultipleErrors = deduplicatedErrors.length > 1;
   return (
     <Overlay>
       <Header data-gatsby-error-type="graphql-error">
@@ -95,5 +95,5 @@ export function GraphqlErrors({ errors, dismiss }) {
         </Accordion>
       </Body>
     </Overlay>
-  )
+  );
 }

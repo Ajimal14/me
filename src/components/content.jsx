@@ -38,7 +38,7 @@ const Container = styled.div`
 
   hr {
     border: 1px dotted ${(props) => props.theme.headingColor};
-    background: ${props => props.theme.contentDropColor};
+    background: ${(props) => props.theme.contentDropColor};
     height: 2px;
     width: 25px;
     margin: 15px 0;
@@ -132,9 +132,33 @@ const TimelineText = styled.div`
   font-size: 14px;
   margin-left: 10px;
 
+  svg {
+    margin: 0px 5px;
+    color: ${(props) => props.theme.headingColor};
+  }
+
   @media only screen and (max-width: 480px) {
     font-size: 9px;
     margin-left: 5px;
+  }
+`;
+
+const Roster = styled.img`
+  height: 250px;
+  margin: 20px auto;
+  @media only screen and (max-width: 480px) {
+    height: 125px;
+  }
+`;
+
+const FourFourTwoGrid = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 70px;
+  align-items: center;
+  font-family: "Raleway";
+  @media only screen and (max-width: 480px) {
+    grid-gap: 20px;
   }
 `;
 
@@ -156,14 +180,9 @@ const Content = ({ theme }) => {
         <Text>
           I have more than 3 Years of experience in Frontend Development with
           React Ecosystem.
-          <br />
-          I write Full Stack Applications and sometimes Mobile Apps with React
-          Native.
-          <hr />I have good expertise working with organisations and early-stage
-          startups varying from Security, Logistics, E-Commerce, and Fantasy
-          Sports.
+          <br />I write Full Stack Applications and sometimes Mobile Apps with
+          React Native.
         </Text>
-
         <Spacer />
         <Heading>Timeline</Heading>
         <Text>
@@ -249,22 +268,27 @@ const Content = ({ theme }) => {
 
         <Spacer />
         <Heading>Four-Four-Two.</Heading>
-        <Text>
-          <FontAwesomeIcon icon={faTv} />I love to watch football on weekends
-          worsening my sleeping pattern with a pint of wheat beer and a cold
-          slice of pizza in my hand.
-          <br />
-          <br />
-          <FontAwesomeIcon icon={faHeart} /> I support Paris Saint Germain.
-          <br />
-          <br />
-          <FontAwesomeIcon icon={faFutbol} /> I've played football in the past
-          for Local Clubs in Delhi and 9-aside National Tournament.
-          <br />
-          <br />
-          <FontAwesomeIcon icon={faGamepad} /> I enjoy playing FIFA in my spare
-          time.
-        </Text>
+        <FourFourTwoGrid>
+          <TimelineText>
+            <FontAwesomeIcon icon={faTv} />I love to watch football on weekends
+            worsening my sleeping pattern with a pint of wheat beer and a cold
+            slice of pizza in my hand.
+            <br />
+            <br />
+            <FontAwesomeIcon icon={faHeart} /> I support Paris Saint Germain.
+            <br />
+            <br />
+            <FontAwesomeIcon icon={faFutbol} /> I've played football in the past
+            for Local Clubs in Delhi and 9-aside National Tournament.
+            <br />
+            <br />
+            <FontAwesomeIcon icon={faGamepad} /> I enjoy playing FIFA in my
+            spare time.
+          </TimelineText>
+          <div>
+            <Roster src="/roster.png" />
+          </div>
+        </FourFourTwoGrid>
       </MiddleContent>
     </Container>
   );
