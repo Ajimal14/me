@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   .toggle-container {
     width: 70px;
-    background-color: #c4c4c4;
+    background-color: #c4c4c475;
     cursor: pointer;
     user-select: none;
     border-radius: 20px;

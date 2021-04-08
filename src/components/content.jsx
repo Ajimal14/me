@@ -45,7 +45,7 @@ const Container = styled.div`
     border-radius: 50px;
   }
   @media only screen and (max-width: 480px) {
-    max-width: 95%;
+    max-width: 90%;
     min-height: 200px;
   }
 `;
@@ -145,7 +145,6 @@ const TimelineText = styled.div`
 
 const Roster = styled.img`
   height: 250px;
-  margin: 20px auto;
   @media only screen and (max-width: 480px) {
     height: 150px;
   }
@@ -155,11 +154,29 @@ const FourFourTwoGrid = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-gap: 70px;
-  align-items: center;
   font-family: "Raleway";
+  font-size: 14px;
   @media only screen and (max-width: 480px) {
-    grid-gap: 50px;
-    margin-top: 20px;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+    div {
+      font-size: 12px;
+      align-items: normal;
+    }
+    .roster-wrapper {
+      text-align: center;
+    }
+  }
+`;
+
+const FourFourTwoText = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  svg {
+    margin-right: 10px;
+    color: ${(props) => props.theme.headingColor};
+    vertical-align: middle;
   }
 `;
 
@@ -270,23 +287,32 @@ const Content = ({ theme }) => {
         <Spacer />
         <Heading>Four-Four-Two.</Heading>
         <FourFourTwoGrid>
-          <TimelineText>
-            <FontAwesomeIcon icon={faTv} />I love to watch football on weekends
-            worsening my sleeping pattern with a pint of wheat beer and a cold
-            slice of pizza in my hand.
-            <br />
-            <br />
-            <FontAwesomeIcon icon={faHeart} /> I support Paris Saint Germain.
-            <br />
-            <br />
-            <FontAwesomeIcon icon={faFutbol} /> I've played football in the past
-            for Local Clubs in Delhi and 9-aside National Tournament.
-            <br />
-            <br />
-            <FontAwesomeIcon icon={faGamepad} /> I enjoy playing FIFA in my
-            spare time.
-          </TimelineText>
           <div>
+            <FourFourTwoText>
+              <FontAwesomeIcon icon={faTv} />
+              <div>
+                I love to watch football on weekends worsening my sleeping
+                pattern with a pint of wheat beer and a cold slice of pizza in
+                my hand.
+              </div>
+            </FourFourTwoText>
+            <FourFourTwoText>
+              <FontAwesomeIcon icon={faHeart} />
+              <div>I support Paris Saint Germain.</div>
+            </FourFourTwoText>
+            <FourFourTwoText>
+              <FontAwesomeIcon icon={faFutbol} />
+              <div>
+                I've played football in the past for Local Clubs in Delhi and
+                9-aside National Tournament.
+              </div>
+            </FourFourTwoText>
+            <FourFourTwoText>
+              <FontAwesomeIcon icon={faGamepad} />
+              <div>I enjoy playing FIFA in my spare time.</div>
+            </FourFourTwoText>
+          </div>
+          <div className="roster-wrapper">
             <Roster src="/roster.png" />
           </div>
         </FourFourTwoGrid>
