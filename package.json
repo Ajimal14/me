@@ -11,7 +11,11 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "cleanup": "node scripts/clean.js",
+    "copy": " node scripts/copy.js",
+    "push": " node scripts/push.js",
+    "publish": "npm run build && npm run cleanup && npm run copy"
   },
   "dependencies": {
     "@fontsource/bebas-neue": "^4.2.2",

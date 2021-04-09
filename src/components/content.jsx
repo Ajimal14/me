@@ -4,26 +4,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import {
   faCss3,
-  faFantasyFlightGames,
   faHtml5,
   faJs,
   faNodeJs,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
 import {
-  faBed,
-  faBeer,
   faCartPlus,
-  faFootballBall,
   faFutbol,
   faGamepad,
   faHandsWash,
   faHeart,
   faMagic,
   faMobile,
-  faNetworkWired,
-  faPizzaSlice,
-  faRadiation,
   faSchool,
   faTv,
   faUserSecret,
@@ -45,7 +38,7 @@ const Container = styled.div`
     border-radius: 50px;
   }
   @media only screen and (max-width: 480px) {
-    max-width: 90%;
+    max-width: 95%;
     min-height: 200px;
   }
 `;
@@ -63,6 +56,7 @@ const MiddleContent = styled.div`
   font-weight: bold;
   @media only screen and (max-width: 480px) {
     margin-top: -20px;
+    padding: 10px;
   }
 `;
 
@@ -108,11 +102,15 @@ const Text = styled.div`
 
   @media only screen and (max-width: 480px) {
     font-size: 14px;
+    padding: 5px;
   }
 `;
 
 const Spacer = styled.div`
   margin-top: 40px;
+  @media only screen and (max-width: 480px) {
+    margin-top: 20px;
+  }
 `;
 
 const SubHeading = styled.div`
@@ -178,9 +176,15 @@ const FourFourTwoText = styled.div`
     color: ${(props) => props.theme.headingColor};
     vertical-align: middle;
   }
+  @media only screen and (max-width: 480px) {
+    padding: 5px;
+    svg {
+      margin-right: 5px;
+    }
+  }
 `;
 
-const Content = ({ theme }) => {
+const Content = () => {
   return (
     <Container>
       <MiddleContent>

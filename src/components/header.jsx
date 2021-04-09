@@ -52,10 +52,7 @@ const Header = ({ theme, changeTheme }) => {
       <div>
         <Logo src={`/${theme}-logo.png`} />
       </div>
-      <Links className="navlinks">
-        {/* <div>About</div>
-        <div>Blog</div>
-        <div>Contact</div> */}
+      <Links>
         <Toggle theme={theme} changeTheme={changeTheme} />
       </Links>
     </Container>
